@@ -97,16 +97,6 @@ set $ws7  "7"
 set $ws8  "8"
 set $ws9  "9"
 set $ws10 "10"
-set $ws11 "11"
-set $ws12 "12"
-set $ws13 "13"
-set $ws14 "14"
-set $ws15 "15"
-set $ws16 "16"
-set $ws17 "17"
-set $ws18 "18"
-set $ws19 "19"
-set $ws20 "20"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -118,16 +108,6 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-bindsym $mod+Control+1 workspace $ws11
-bindsym $mod+Control+2 workspace $ws12
-bindsym $mod+Control+3 workspace $ws13
-bindsym $mod+Control+4 workspace $ws14
-bindsym $mod+Control+5 workspace $ws15
-bindsym $mod+Control+6 workspace $ws16
-bindsym $mod+Control+7 workspace $ws17
-bindsym $mod+Control+8 workspace $ws18
-bindsym $mod+Control+9 workspace $ws19
-bindsym $mod+Control+0 workspace $ws20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -140,16 +120,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym $mod+Shift+Control+1 move container to workspace $ws11
-bindsym $mod+Shift+Control+2 move container to workspace $ws12
-bindsym $mod+Shift+Control+3 move container to workspace $ws13
-bindsym $mod+Shift+Control+4 move container to workspace $ws14
-bindsym $mod+Shift+Control+5 move container to workspace $ws15
-bindsym $mod+Shift+Control+6 move container to workspace $ws16
-bindsym $mod+Shift+Control+7 move container to workspace $ws17
-bindsym $mod+Shift+Control+8 move container to workspace $ws18
-bindsym $mod+Shift+Control+9 move container to workspace $ws19
-bindsym $mod+Shift+Control+0 move container to workspace $ws20
 
 bindsym $mod+Next move workspace to output up
 bindsym $mod+Prior move workspace to output down
@@ -160,7 +130,7 @@ bindsym $mod+b workspace prev
 bindsym $mod+n workspace next
 
 # assign apps to workspaces
-assign [class="Chromium"] $ws2
+assign [class="chrome"] $ws2
 assign [class="Telegram"] $ws7
 assign [class="icq"]      $ws8
 assign [class="Emacs"]    $ws3
@@ -213,9 +183,8 @@ workspace_auto_back_and_forth yes
 bindsym $mod+p exec "monitors"
 
 # mute mic
-bindsym XF86AudioMicMute exec "amixer set Capture toggle"
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
 
-bindsym $mod+i exec --no-startup-id "feh -z --bg-fill /home/max/Pictures/chromecast/*"
 
 # startup
 exec --no-startup-id nm-applet
@@ -225,13 +194,11 @@ exec --no-startup-id "/usr/bin/setxkbmap us,ru ,winkeys grp:win_space_toggle"
 exec --no-startup-id i3-msg "workspace $ws1; exec i3-sensible-terminal"
 exec --no-startup-id chromium-browser
 exec --no-startup-id telegram
-exec --no-startup-id "xinput --set-prop 13 'libinput Accel Speed' 1"
-exec --no-startup-id "redshift -l 55.75:37.61 -t 5700:4000 -m randr -v"
-exec --no-startup-id "feh -z --bg-fill /home/max/Pictures/chromecast/*"  
+exec --no-startup-id "xinput --set-prop 13 'libinput Accel Speed' -0.5"
 
 
 # screen locking
 exec --no-startup-id light-locker --lock-after-screensaver=1 --late-locking --lock-on-suspend --lock-on-lid
-bindsym $mod+m exec "light-locker-command -l"
+bindsym $mod+backslash exec "light-locker-command -l"
 
 exec --no-startup-id i3-msg "workspace $ws3"

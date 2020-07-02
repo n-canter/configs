@@ -45,10 +45,6 @@ cpu_usage {
 	format = "cpu: %usage"
 }
 
-run_watch VPN {
-	pidfile = "/var/run/vpnc/pid"
-}
-
 tztime local {
 	format = "%h-%d %H:%M:%S"
 }
